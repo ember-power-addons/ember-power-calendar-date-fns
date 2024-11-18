@@ -172,11 +172,6 @@ export function isoWeekday(date: Date): number {
 export function getWeekdaysShort(): string[] {
   const weekStart = new Date(1970, 0, 4);
   const weekEnd = new Date(1970, 0, 10);
-  
-  const defaultOptions = getDefaultOptions();
-  const currentLocale = defaultOptions.locale;
-  
-  console.log(currentLocale);
 
   return eachDayOfInterval({ start: weekStart, end: weekEnd }).map(date =>
     formatFns(date, 'EEE') // Mon, Tue, Wed, ..., Sun
