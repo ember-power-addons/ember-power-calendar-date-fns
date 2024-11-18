@@ -1,0 +1,3 @@
+packages:
+  - 'ember-power-calendar-date-fns'
+  - 'test-app'

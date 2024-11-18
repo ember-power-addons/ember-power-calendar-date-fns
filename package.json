@@ -1,0 +1,56 @@
+{
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/ember-power-addons/ember-power-calendar-date-fns.git"
+  },
+  "license": "MIT",
+  "author": "",
+  "scripts": {
+    "build": "pnpm run --filter ember-power-calendar-date-fns build",
+    "build:docs": "pnpm run --filter docs build",
+    "lint": "pnpm run --filter '*' lint",
+    "lint:fix": "pnpm run --filter '*' lint:fix",
+    "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
+    "start:addon": "pnpm run --filter ember-power-calendar-date-fns start --no-watch.clearScreen",
+    "start:docs": "pnpm run --filter docs start --preserveWatchOutput",
+    "start:test-app": "pnpm run --filter test-app start"
+  },
+  "devDependencies": {
+    "@release-it-plugins/lerna-changelog": "^6.1.0",
+    "@release-it-plugins/workspaces": "^4.2.0",
+    "concurrently": "^8.2.2",
+    "prettier": "^3.2.5",
+    "prettier-plugin-ember-template-tag": "^2.0.0",
+    "release-it": "^17.1.1"
+  },
+  "workspaces": [
+    "ember-power-calendar-date-fns",
+    "test-app"
+  ],
+  "engines": {
+    "node": ">= 18"
+  },
+  "release-it": {
+    "plugins": {
+      "@release-it-plugins/workspaces": {
+        "workspaces": [
+          "ember-power-calendar-date-fns"
+        ]
+      },
+      "@release-it-plugins/lerna-changelog": {
+        "infile": "CHANGELOG.md"
+      }
+    },
+    "git": {
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true,
+      "tokenRef": "GITHUB_AUTH"
+    },
+    "npm": false
+  },
+  "version": "1.0.2",
+  "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee"
+}
