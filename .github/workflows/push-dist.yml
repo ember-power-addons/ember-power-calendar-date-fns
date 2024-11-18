@@ -1,4 +1,4 @@
-﻿# Because this library needs to be built,
+# Because this library needs to be built,
 # we can't easily point package.json files at the git repo for easy cross-repo testing.
 #
 # This workflow brings back that capability by placing the compiled assets on a "dist" branch

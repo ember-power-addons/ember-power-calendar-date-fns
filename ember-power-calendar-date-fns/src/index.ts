@@ -26,7 +26,7 @@ import {
   getDefaultOptions,
   setDefaultOptions,
   type Locale,
- } from 'date-fns';
+} from 'date-fns';
 import type {
   NormalizeCalendarValue,
   NormalizeMultipleActionValue,
@@ -65,7 +65,7 @@ export default {
 // lookup table for faster conversion
 // power-calendar format -> date-fns format (see https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)
 const knownFormats: {
-  [key: string]: string,
+  [key: string]: string;
 } = {
   'YYYY-MM-DD': 'yyyy-MM-dd',
   'MMMM YYYY': 'MMMM yyyy',
@@ -92,7 +92,7 @@ function getLocale(locale: string): Locale {
   if (!dateFnsLocale) {
     throw new Error(`Locale ${locale} was not registered!`);
   }
-  
+
   return dateFnsLocale;
 }
 
@@ -125,7 +125,9 @@ export function formatDate(
 ): string {
   const normalizedFormat = normalizeDateFormat(format);
   if (locale) {
-    return withLocale(locale, () => formatFns(date, normalizedFormat)) as string;
+    return withLocale(locale, () =>
+      formatFns(date, normalizedFormat),
+    ) as string;
   } else {
     return formatFns(date, normalizedFormat);
   }
@@ -173,8 +175,8 @@ export function getWeekdaysShort(): string[] {
   const weekStart = new Date(1970, 0, 4);
   const weekEnd = new Date(1970, 0, 10);
 
-  return eachDayOfInterval({ start: weekStart, end: weekEnd }).map(date =>
-    formatFns(date, 'EEE') // Mon, Tue, Wed, ..., Sun
+  return eachDayOfInterval({ start: weekStart, end: weekEnd }).map(
+    (date) => formatFns(date, 'EEE'), // Mon, Tue, Wed, ..., Sun
   );
 }
 
@@ -182,8 +184,8 @@ export function getWeekdaysMin(): string[] {
   const weekStart = new Date(1970, 0, 4);
   const weekEnd = new Date(1970, 0, 10);
 
-  return eachDayOfInterval({ start: weekStart, end: weekEnd }).map(date =>
-    formatFns(date, 'EEEEEE') // Mo, Tu, We, Th, Fr, Sa, Su
+  return eachDayOfInterval({ start: weekStart, end: weekEnd }).map(
+    (date) => formatFns(date, 'EEEEEE'), // Mo, Tu, We, Th, Fr, Sa, Su
   );
 }
 
@@ -191,8 +193,8 @@ export function getWeekdays(): string[] {
   const weekStart = new Date(1970, 0, 4);
   const weekEnd = new Date(1970, 0, 10);
 
-  return eachDayOfInterval({ start: weekStart, end: weekEnd }).map(date =>
-    formatFns(date, 'EEEE') // Monday, Tuesday, ..., Sunday
+  return eachDayOfInterval({ start: weekStart, end: weekEnd }).map(
+    (date) => formatFns(date, 'EEEE'), // Monday, Tuesday, ..., Sunday
   );
 }
 
@@ -221,8 +223,8 @@ export function isBetween(
   date: Date,
   start: Date,
   end: Date,
-  _unit?: string,
-  _inclusivity?: string,
+  // unit?: string,
+  // inclusivity?: string,
 ): boolean {
   return +start <= +date && +date <= +end;
 }
