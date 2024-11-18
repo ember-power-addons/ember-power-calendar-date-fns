@@ -90,7 +90,9 @@ export function registerLocale(locale: Locale) {
 function getLocale(locale: string): Locale {
   const dateFnsLocale = registeredLocales[locale];
   if (!dateFnsLocale) {
-    throw new Error(`Locale ${locale} was not registered in ember-power-calendar-date-fns!`);
+    throw new Error(
+      `Locale ${locale} was not registered in ember-power-calendar-date-fns!`,
+    );
   }
 
   return dateFnsLocale;
