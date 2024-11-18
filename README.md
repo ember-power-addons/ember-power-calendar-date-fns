@@ -1,1 +1,1 @@
-ember-power-calendar-moment/README.md
+ember-power-calendar-date-fns/README.md

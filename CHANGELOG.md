@@ -1,1 +1,1 @@
-ember-power-calendar-moment/CHANGELOG.md
+ember-power-calendar-date-fns/CHANGELOG.md
