@@ -31,6 +31,23 @@ import DateUtils from 'ember-power-calendar-date-fns';
 registerDateLibrary(DateUtils);
 ```
 
+### Register locale
+
+If you have specified a specific language over `setDefaultOptions()` in `date-fns` the packages is automatically using this language for all formats.
+As the package itself has only the default language of `date-fns` installed, you need to register all additional languages to `ember-power-calendar-date-fns`.
+You can do this like in following example:
+
+```
+import { registerLocale } from 'ember-power-calendar-date-fns';
+import { setDefaultOptions } from 'date-fns';
+import { de, it } from 'date-fns/locale';
+
+setDefaultOptions({ locale: de }); // Sets the default locale for date-fns
+
+registerLocale(de); // this registers the language German (de) in power calendar meta package
+registerLocale(it); // this registers the language Italian (it) in power calendar meta package
+```
+
 
 ## Usage
 

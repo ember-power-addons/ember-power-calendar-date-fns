@@ -62,6 +62,8 @@ export default {
   endOfWeek,
 };
 
+const registeredLocales: Record<string, Locale> = {};
+
 // lookup table for faster conversion
 // power-calendar format -> date-fns format (see https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)
 const knownFormats: {
@@ -73,8 +75,6 @@ const knownFormats: {
   YYYY: 'yyyy',
 };
 
-const locales: Record<string, Locale> = {};
-
 function normalizeDateFormat(formatString: string): string {
   if (knownFormats[formatString]) return knownFormats[formatString];
 
@@ -83,14 +83,14 @@ function normalizeDateFormat(formatString: string): string {
   return formatString;
 }
 
-export function registerLocale(code: string, locale: Locale) {
-  locales[code] = locale;
+export function registerLocale(locale: Locale) {
+  registeredLocales[locale.code] = locale;
 }
 
 function getLocale(locale: string): Locale {
-  const dateFnsLocale = locales[locale];
+  const dateFnsLocale = registeredLocales[locale];
   if (!dateFnsLocale) {
-    throw new Error(`Locale ${locale} was not registered!`);
+    throw new Error(`Locale ${locale} was not registered in ember-power-calendar-date-fns!`);
   }
 
   return dateFnsLocale;
@@ -333,11 +333,8 @@ export function getDefaultLocale(): string {
 
 export function localeStartOfWeek(locale: string): number {
   const now = new Date();
-  const day = withLocale(locale, () =>
-    formatDate(startOf(now, 'week'), 'dddd'),
-  ) as string;
-  const idx = (withLocale(locale, getWeekdays) as string[]).indexOf(day);
-  return idx >= 0 ? idx : 0;
+  const day = withLocale(locale, () => weekday(startOf(now, 'week'))) as number;
+  return day >= 0 ? day : 0;
 }
 
 export function startOfWeek(day: Date, startOfWeek: number): Date {
