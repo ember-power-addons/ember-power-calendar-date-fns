@@ -24,7 +24,7 @@ ember install ember-power-calendar-date-fns date-fns
 ```
 
 Add the following lines into you `app/app.js` to register this meta addon to `ember-power-calendar`
-```
+```ts
 import { registerDateLibrary } from 'ember-power-calendar';
 import DateUtils from 'ember-power-calendar-date-fns';
 
@@ -37,7 +37,7 @@ If you have specified a specific language over `setDefaultOptions()` in `date-fn
 As the package itself has only the default language of `date-fns` installed, you need to register all additional languages to `ember-power-calendar-date-fns`.
 You can do this like in following example:
 
-```
+```ts
 import { registerLocale } from 'ember-power-calendar-date-fns';
 import { setDefaultOptions } from 'date-fns';
 import { de, it } from 'date-fns/locale';
