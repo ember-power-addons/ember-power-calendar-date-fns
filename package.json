@@ -44,7 +44,7 @@
     },
     "npm": false
   },
-  "version": "0.1.0",
+  "version": "1.0.0",
   "packageManager": "pnpm@10.10.0",
   "devDependencies": {
     "@glint/core": "^1.5.2",

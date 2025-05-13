@@ -1,6 +1,6 @@
 {
   "name": "ember-power-calendar-date-fns",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Meta package for ember-power-calendar to get run with date-fns",
   "keywords": [
     "ember-addon"
